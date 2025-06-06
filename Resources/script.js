@@ -19,7 +19,6 @@ $(document).ready(function () {
 
     })   
 
-
     //changing back to label when editted the text.
     $(".submit").click(function () { 
         if($(this).closest(".taskcard").find(".editable").val() && $(this).closest(".taskcard").find(".editable").val().trim() !==''){
