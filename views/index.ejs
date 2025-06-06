@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo list</title>
+    <link rel="stylesheet" href="/Resources/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body style="background: linear-gradient(to right, #1f1c2c, #928dab)">
+
+    <div class="container justify-content-center d-flex" >
+        <div class="card bg-dark" style="width: 70rem;">
+            <div class="card-header">
+                <h1 class="fw-bold text-center" style="color: white;" >To-DO list</h1>
+            </div>
+
+            <%for (i=0;i<ejes.length;i++){%>
+                
+                <div class="card-header  bg-light fs-4 m-2 d-flex">
+                    <input type="checkbox"  id="task" class="m-2 listimg">
+                    <form action="delete" method="post">
+                        <input type="hidden" name="index" value="<%= i %>">
+                        <button type= "submit" style="outline: none; border: none;"><img src="/Resources/images/bin (2).png" alt="" class="m-2 listimg binimg" data-index="<%= i %>"></button>
+                    </form> 
+                    
+                    <img src="/Resources/images/pencil.png" alt="" class="m-2 listimg"> 
+                    <label for="task"> <%=ejes[i]%> </label>
+                    
+                </div>
+            <%}%>
+
+            
+
+
+
+
+            <div class="card-body">
+                <form action="/" method="post">
+                    <div class="listInput">
+                        <input type="text" class="card-text inputField" name="InputField">
+                        <button type="submit" class="bg-transparent" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
+
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    
+    <script src="/Resources/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.inputField{
+    width: 98%;
+    background:none;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+
+}
+.listInput{
+    display: flex;
+
+}
+#addimg{
+    width: 5rem;
+    opacity: 70%;
+    cursor: pointer;
+}
+#addimg:hover{
+    opacity: 100%;
+}
+
+.listimg{
+    max-width: 1.7rem;
+    max-height: 1.7rem;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ label{
+    text-decoration: line-through;
+}
