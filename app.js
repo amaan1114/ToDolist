@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path');
-
+const port = process.env.PORT || 8080;
 const app = express()
 app.set("view engine","ejs")
 app.use(express.urlencoded({extended:true}))
@@ -45,7 +45,7 @@ app.post('/submit-edit',function(req,res){
     
 })
 
-app.listen(8000,function(){
+app.listen(port,function(){
     console.log("Started")
 })
 
