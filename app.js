@@ -27,13 +27,23 @@ app.post('/',function(req,res){
 
 app.post('/delete',function(req,res){
     var inum = parseInt(req.body.index);
-     if (!isNaN(inum) && inum >= 0 && inum < list.length) {
+    if (!isNaN(inum) && inum >= 0 && inum < list.length) {
         list.splice(inum, 1);
     }
     res.redirect('/')
 
 })
 
+app.post('/submit-edit',function(req,res){
+    var inum = parseInt(req.body.index);
+
+    if (!isNaN(inum) && inum >= 0 && inum < list.length) {
+        list[inum]=req.body.text_edite;
+    }
+   
+    res.redirect('/')
+    
+})
 
 app.listen(8000,function(){
     console.log("Started")

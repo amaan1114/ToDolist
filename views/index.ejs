@@ -10,23 +10,33 @@
 </head>
 <body style="background: linear-gradient(to right, #1f1c2c, #928dab)">
 
-    <div class="container justify-content-center d-flex" >
-        <div class="card bg-dark" style="width: 70rem;">
+    <!--edit text, notes section-->>
+    <div class="container justify-content-center align-items-center d-flex" style="height: 100vh;" >
+        <div class="card bg-dark" style="width: 20rem; overflow: auto; height: 20rem; ">
             <div class="card-header">
                 <h1 class="fw-bold text-center" style="color: white;" >To-DO list</h1>
             </div>
 
             <%for (i=0;i<ejes.length;i++){%>
                 
-                <div class="card-header  bg-light fs-4 m-2 d-flex">
-                    <input type="checkbox"  id="task" class="m-2 listimg">
-                    <form action="delete" method="post">
+                <div class="card-title  bg-light  m-1 d-flex taskcard">
+                    <input type="checkbox"  id="task" class="m-2 listimg check" >
+                    <form action="delete" method="post" class="delete">
                         <input type="hidden" name="index" value="<%= i %>">
-                        <button type= "submit" style="outline: none; border: none;"><img src="/Resources/images/bin (2).png" alt="" class="m-2 listimg binimg" data-index="<%= i %>"></button>
+                        <button type="submit"  class="bg-transparent" style="outline: none; border: none;" ><img src="/Resources/images/bin (2).png" alt="" class="m-2 listimg binimg" data-index="<%= i %>"></button>
                     </form> 
+                 
                     
-                    <img src="/Resources/images/pencil.png" alt="" class="m-2 listimg"> 
-                    <label for="task"> <%=ejes[i]%> </label>
+                    <img src="/Resources/images/pencil.png" alt="" class="m-2 listimg edit"> 
+                    <label for="task" class="editable" name="TextBox"> <%=ejes[i]%> </label>
+                    
+                    <form action="submit-edit" method="post" class="submit-edit" style="display: none;">
+                        <input type="hidden" name="index" value="<%= i %>">
+                        <input type="hidden" name="text_edite" class="text_editting" value="">
+                        <button type="submit"  class="bg-transparent submit submit-editbtn" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
+
+
+                    </form>
                     
                 </div>
             <%}%>
@@ -39,8 +49,8 @@
             <div class="card-body">
                 <form action="/" method="post">
                     <div class="listInput">
-                        <input type="text" class="card-text inputField" name="InputField">
-                        <button type="submit" class="bg-transparent" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
+                        <input type="text" class="card-text inputField" name="InputField" placeholder="Enter the task">
+                        <button type="submit"  class="bg-transparent" style="outline: none; border: none;" ><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
 
                     </div>
                     
@@ -50,6 +60,7 @@
 
     </div>
 
+    <!--text Input-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     
     <script src="/Resources/script.js"></script>

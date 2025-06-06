@@ -7,12 +7,16 @@
     color: white;
 
 }
+label{
+    font-size: 1rem;
+    font-family: cursive ,sans-serif;
+}
 .listInput{
     display: flex;
 
 }
 #addimg{
-    width: 5rem;
+    width: 3rem;
     opacity: 70%;
     cursor: pointer;
 }
@@ -21,10 +25,11 @@
 }
 
 .listimg{
-    max-width: 1.7rem;
-    max-height: 1.7rem;
+    max-width: 1rem;
+    max-height: 1rem;
     cursor: pointer;
 }
+
 
 input[type="checkbox"]:checked ~ label{
     text-decoration: line-through;
