@@ -1,14 +1,24 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+
+console.log("Before connecting to MongoDB...");
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.error("MongoDB connection error:", err))
+
+console.log("After initiating connection...");
+
 const { stringify } = require('querystring');
 const port = process.env.PORT || 8080;
 const app = express()
 app.set("view engine","ejs")
 app.use(express.urlencoded({extended:true}))
 
-mongoose.connect("mongodb://localhost:27017/todo")
+
+
 const trySchema  = new mongoose.Schema({
     name:String,
     check:Boolean
