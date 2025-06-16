@@ -1,4 +1,3 @@
-# ToDolist
-To do list app.
+Deploy link:
 <br>
 https://todolist-aqak.onrender.com/
