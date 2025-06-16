@@ -5,7 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 console.log("Before connecting to MongoDB...");
-mongoose.connect("mongodb+srv://amaanzaidi05:mVcoW5WUJQphiNv4@todoclustor1.utl1pwz.mongodb.net/tododb?retryWrites=true&w=majority&appName=TodoClustor1")
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err))
 
