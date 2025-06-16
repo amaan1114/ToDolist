@@ -21,19 +21,25 @@
             <%for (i=0;i<ejes.length;i++){%>
                 
                 <div class="card-title  bg-light  m-1 d-flex taskcard">
-                    <input type="checkbox"  id="task" class="m-2 listimg check" >
+                    <form action="checked" method="post">
+                        <input type="hidden" name="oldcheckName" value="<%= ejes[i].name %>">
+                         <input type="checkbox"  id="task" name="checkbox1" class="m-2 listimg check" onchange="this.form.submit()" <% if (ejes[i].check) { %> checked <% } %> >
+                        
+
+                    </form>
+                    
                     <form action="delete" method="post" class="delete">
-                        <input type="hidden" name="index" value="<%= i %>">
+                        <input type="hidden" name="index" value="<%=ejes[i].name%>">
                         <button type="submit"  class="bg-transparent" style="outline: none; border: none;" ><img src="/Resources/images/bin (2).png" alt="" class="m-2 listimg binimg" data-index="<%= i %>"></button>
                     </form> 
                  
                     
                     <img src="/Resources/images/pencil.png" alt="" class="m-2 listimg edit"> 
-                    <label for="task" class="editable" name="TextBox"> <%=ejes[i]%> </label>
+                    <label for="task" class="editable" name="TextBox" style="<% if (ejes[i].check) { %>text-decoration: line-through;<% } %>"> <%=ejes[i].name%> </label>
                     
                     <form action="submit-edit" method="post" class="submit-edit" style="display: none;">
-                        <input type="hidden" name="index" value="<%= i %>">
-                        <input type="hidden" name="text_edite" class="text_editting" required>
+                        <input type="hidden" name="oldName" value="<%=ejes[i].name%>">
+                        <input type="hidden" name="newName"  value="<%=ejes[i].name%>" class="text_editting" required>
                         <button type="submit"  class="bg-transparent submit submit-editbtn" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
 
 
