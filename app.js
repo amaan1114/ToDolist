@@ -15,6 +15,7 @@ const { stringify } = require('querystring');
 const port = process.env.PORT || 8080;
 const app = express()
 app.set("view engine","ejs")
+app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 
@@ -61,22 +62,24 @@ app.post('/',function(req,res){
     res.redirect('/')
 })
 
-app.post('/delete',function(req,res){
-    var inum = req.body.index;
-    if(inum){
-        item.deleteOne({ name: inum })
-        .then(() => res.redirect("/"))
-        .catch(err => {
-            console.error("Delete failed:", err);
-            res.status(500).send("Failed to delete item");
-        });
+app.delete('/delete',function(req,res){
+    const inum = req.body.index;
 
+    if (inum) {
+        item.deleteOne({ name: inum })
+            .then(() => res.status(200).json({ redirect: "/" })) // ✅ must return JSON
+            .catch(err => {
+                console.error("Delete failed:", err);
+                res.status(500).send("Failed to delete item");
+            });
+    } else {
+        res.status(400).send("No index provided");
     }
    
 
 })
 
-app.post('/submit-edit',function(req,res){
+app.put('/submit-edit',function(req,res){
     const oldName = req.body.oldName.trim();
     const newName = req.body.newName.trim();
 
@@ -84,8 +87,8 @@ app.post('/submit-edit',function(req,res){
         return res.redirect("/");
     }
 
-    item.updateOne({ name: oldName }, { name: newName })
-        .then(() => res.redirect("/"))
+     item.updateOne({ name: oldName }, { name: newName })
+        .then(() => res.status(200).json({ redirect: "/" })) // Send redirect info
         .catch(err => {
             console.error("Update failed:", err);
             res.status(500).send("Failed to update item");

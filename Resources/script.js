@@ -1,8 +1,64 @@
 $(document).ready(function () {
+$('.delete-form').on('submit', function (e) {
+    e.preventDefault();
+
+    const index = $(this).data('index');
+
+   fetch('/delete', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ index })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect; // Redirect manually
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}); 
+
+
     var text=''
+
+
+    $('.edit-form').on('submit', function (e) {
+        e.preventDefault();
+
+        const oldName = $(this).data('oldname');
+        const newName = $(this).find('input[name="newName"]').val().trim();
+
+        if (!newName) {
+            alert("New name cannot be empty.");
+            return;
+        }
+
+        fetch('/submit-edit', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ oldName, newName })
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Update failed");
+            return res.json();
+        })
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(err => console.error("Error:", err));
+    });
+
+
+
 
     //edit button working and changing into text field
     $(".edit").click(function(){
+       
+
+
+
         const label =  $(this).closest(".taskcard").find(".editable")
         text = label.text()
         $(this).closest(".taskcard").removeClass("bg-light").addClass("bg-dark");
