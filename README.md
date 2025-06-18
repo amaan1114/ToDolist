@@ -1,6 +1,6 @@
 # 📝 MERN To-Do List App
 <br>
-A full-stack To-Do List application built using the **MERN stack** — MongoDB, Express.js, React, and Node.js. This app allows users to create, read, update, and delete their daily tasks in a clean and responsive UI.
+A full-stack To-Do List application built using the **MERN stack** — MongoDB, Express.js and Node.js. This app allows users to create, read, update, and delete their daily tasks in a clean and responsive UI.
 <br>
 ---
 <br>
