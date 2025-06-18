@@ -19,8 +19,7 @@ A full-stack To-Do List application built using the **MERN stack** — MongoDB, 
 ## 🛠️ Tech Stack
 <br>
 ### Frontend
-<br>
-- React
+
 <br>
 - HTML, CSS, JavaScript
 <br>
