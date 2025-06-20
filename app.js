@@ -84,7 +84,7 @@ app.put('/submit-edit',function(req,res){
     const newName = req.body.newName.trim();
 
     if (!newName) {
-        return res.redirect("/");
+        return res.send("Field cannot be empty")
     }
 
      item.updateOne({ name: oldName }, { name: newName })

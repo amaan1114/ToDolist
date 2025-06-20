@@ -39,7 +39,7 @@
                     
                     <form action="submit-edit" class="submit-edit edit-form" data-oldname="<%= ejes[i].name %>" style="display: none;">
                         <input type="hidden" name="newName"  value="<%=ejes[i].name%>" class="text_editting" required>
-                        <button type="submit"  class="bg-transparent submit submit-editbtn" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
+                        <button type="button"  class="bg-transparent submit submit-editbtn" style="outline: none; border: none;"><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
 
 
                     </form>
@@ -53,10 +53,10 @@
 
 <!--text input section-->
             <div class="card-body">
-                <form action="/" method="post">
+                <form action="/" method="post" class="listinputform">
                     <div class="listInput">
                         <input type="text" class="card-text inputField" name="InputField" placeholder="Enter the task" required>
-                        <button type="submit"  class="bg-transparent submit-textinput" style="outline: none; border: none;" ><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
+                        <button type="button"  class="bg-transparent submit-textinput submitinput" style="outline: none; border: none;" ><img src="/Resources/images/add.png" alt="add image" id="addimg"></button> 
 
                     </div>
                     

@@ -50,6 +50,7 @@ $('.delete-form').on('submit', function (e) {
         .catch(err => console.error("Error:", err));
     });
 
+    let editing = false
 
 
 
@@ -72,6 +73,7 @@ $('.delete-form').on('submit', function (e) {
         input.focus();
         const len = input.val().length;
         input[0].setSelectionRange(len, len);
+        editing = true
 
     })   
 
@@ -91,9 +93,27 @@ $('.delete-form').on('submit', function (e) {
             $(this).closest(".taskcard").find('.submit-edit').hide()  
             $(this).closest(".taskcard").find('.submit-edit').find('.text_editting').val(text);  
             input.replaceWith(label);
+            if(editing){
+                $('.edit-form').submit();
+                editing=false
+            }
+            
 
+        }else{
+            alert("The input field cannot be empty")
         }
+
         
+        
+
+    });
+    $('.submitinput').click(function (e) { 
+        if($(this).closest('.listInput').find('.inputField').val() && $(this).closest('.listInput').find('.inputField').val().trim()!==''){
+            ('.listinputform').submit()
+
+        }else{
+            alert('The input field can not be empty.')
+        }
         
     });
 });
