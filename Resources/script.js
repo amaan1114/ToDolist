@@ -109,7 +109,7 @@ $('.delete-form').on('submit', function (e) {
     });
     $('.submitinput').click(function (e) { 
         if($(this).closest('.listInput').find('.inputField').val() && $(this).closest('.listInput').find('.inputField').val().trim()!==''){
-            ('.listinputform').submit()
+            $('.listinputform').submit()
 
         }else{
             alert('The input field can not be empty.')
